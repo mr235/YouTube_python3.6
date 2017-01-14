@@ -155,3 +155,20 @@ classmates = {"Tony": "cool but smells", "Emma": "sits behind me", "Lucy": "asks
 
 for k, v in classmates.items():
     print(k, v)
+
+
+print("--------------except-------------------")
+
+while True:
+    try:
+        number = int(input("What's your favourite number hoss!\n"))
+        print(18/number)
+        break
+    except ValueError:
+        print("Make sure and enter a number")
+    except ZeroDivisionError:
+        print("Don't pick zero")
+    except:
+        print("get a exception")
+    finally:
+        print("loop complete")

@@ -172,3 +172,46 @@ while True:
         print("get a exception")
     finally:
         print("loop complete")
+
+print("--------------Unpack List or Tuples-------------------")
+
+data, name, price = ["December 23, 2016", "Bread Gloves", 8.5]
+print(name)
+
+def drop_first_last(grades):
+    first, *middle, last = grades
+    avg = sum(middle) / len(middle)
+    print("avg = ", avg)
+
+drop_first_last([65, 70, 78, 83, 90])
+drop_first_last([45, 70, 78, 83, 94])
+
+print("--------------Zip-------------------")
+
+first = ["Bucky", "Tom", "Taylor"]
+last = ["Roberts", "Hanks", "Swift"]
+
+names = zip(first, last)
+
+for a, b in names:
+    print(a, b)
+
+print("--------------Lambda-------------------")
+
+answer = lambda x: x * 7
+
+print(answer(5))
+
+print("--------------Min, Max, and Sorting Dictionaries-------------------")
+
+stocks = {
+    "GOOG": 520.54,
+    "FB": 76.45,
+    "YHOO": 39.28,
+    "AMAZON": 306.21,
+    "AAPL": 99.76
+}
+
+print(min(zip(stocks.values(), stocks.keys())))
+print(max(zip(stocks.values(), stocks.keys())))
+print(sorted(zip(stocks.values(), stocks.keys())))

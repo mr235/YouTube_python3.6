@@ -1,4 +1,6 @@
 import heapq
+from collections import Counter
+from operator import itemgetter, attrgetter
 from struct import *
 
 name = "Tommy D"
@@ -279,3 +281,89 @@ stocks = [
 ]
 
 print(heapq.nsmallest(3, stocks, key=lambda stock: stock["price"]))
+
+print("-------------- Dictionary Calculations -------------------")
+
+stocks = {
+    "GOOG": 434,
+    "APPL": 325,
+    "FB": 54,
+    "AMZN": 623,
+    "MSFT": 549,
+}
+
+print(min(stocks))
+
+min_price = min(zip(stocks.values(), stocks.keys()))
+print(min_price)
+
+print("-------------- Finding Most Frequent Items -------------------")
+
+text = "We hope to one day become the world's leader in free, educational resources." \
+       "We are constantly discovering and adding more free content to the website everyday." \
+       "There is already an enormous amount of resources online that can be accessed for free by anyone in the world, " \
+       "the main issue right now is that very little of it is organized or structured in any way. " \
+       "We want to be the solution to that problem. "
+
+words = text.split()
+
+counter = Counter(words)
+top_three = counter.most_common(3)
+print(top_three)
+
+print("-------------- Dictionary Multiple Key Sort -------------------")
+
+users = [
+    {"fname": "Bucky", "lname": "Roberts"},
+    {"fname": "Tom", "lname": "Roberts"},
+    {"fname": "Bernie", "lname": "Zunks"},
+    {"fname": "Jenna", "lname": "Hayes"},
+    {"fname": "Sally", "lname": "Jones"},
+    {"fname": "Amanda", "lname": "Roberts"},
+    {"fname": "Tom", "lname": "Williams"},
+    {"fname": "Dean", "lname": "Hayes"},
+    {"fname": "Bernie", "lname": "Barbie"},
+    {"fname": "Tom", "lname": "Jones"},
+]
+
+for x in sorted(users, key=itemgetter("fname")):
+    print(x)
+
+print("--------------")
+
+for x in sorted(users, key=itemgetter("fname", "lname")):
+    print(x)
+
+print("-------------- Sorting Custom Objects -------------------")
+
+class User:
+
+    def __init__(self, x, y):
+        self.name = x
+        self.user_id = y
+
+    # use print show that what you want
+    def __repr__(self):
+        return self.name + ":" + str(self.user_id)
+
+users = [
+    User("Bucky", 43),
+    User("Sally", 5),
+    User("Tuna", 61),
+    User("Brian", 2),
+    User("Joby", 77),
+    User("Amanda", 9)
+]
+
+for user in users:
+    print(user)
+
+print("-------- sorted by name ------")
+
+for user in sorted(users, key=attrgetter("name")):
+    print(user)
+
+print("-------- sorted by id ------")
+
+for user in sorted(users, key=attrgetter("user_id")):
+    print(user)

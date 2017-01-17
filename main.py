@@ -1,3 +1,4 @@
+import heapq
 from struct import *
 
 name = "Tommy D"
@@ -238,3 +239,43 @@ original_data = unpack("iif", packed_data)
 print(original_data)
 
 print(unpack("iif", b'\x06\x00\x00\x00\x13\x00\x00\x00)\\\x97@'))
+
+print("--------------map-------------------")
+
+income = [10, 30, 75]
+
+def double_money(dollars):
+    return dollars * 2
+
+new_income = list(map(double_money, income))
+print(new_income)
+
+print("-------------- Binary AND -------------------")
+
+a = 50      # 110010
+b = 25      # 011001
+c = a & b   # 010000
+
+print(c)
+
+print("-------------- Binary RIGHT SHIFT -------------------")
+
+x = 240     # 11110000
+y = x >> 2  # 00111100
+
+print(y)
+
+print("-------------- Finding Largest or Smallest Items -------------------")
+
+grades = [13, 99, 18, 29, 17, 83, 65, 77, 55]
+print(heapq.nlargest(3, grades))
+
+stocks = [
+    {"ticker": "AAPL", "price": 201},
+    {"ticker": "GOOG", "price": 800},
+    {"ticker": "FB", "price": 54},
+    {"ticker": "MSFT", "price": 313},
+    {"ticker": "TUNA", "price": 68}
+]
+
+print(heapq.nsmallest(3, stocks, key=lambda stock: stock["price"]))

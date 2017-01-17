@@ -1,4 +1,5 @@
 from PIL import Image
+from PIL import ImageFilter
 
 def imgInfo():
 
@@ -47,9 +48,35 @@ def mergeImg():
     new_img = Image.merge("RGB", (r1, g1, b2))
     new_img.show()
 
+def transposeImg():
+    dajiuhu = Image.open("dajiuhu-005.jpg")
+    square_img = dajiuhu.resize((300, 300))
+    flip_img = dajiuhu.transpose(Image.FLIP_TOP_BOTTOM)
+    spin_img = dajiuhu.transpose(Image.ROTATE_90)
+
+    dajiuhu.show()
+    square_img.show()
+    flip_img.show()
+    spin_img.show()
+
+def filterImg():
+    dajiuhu = Image.open("dajiuhu-005.jpg")
+    black_white = dajiuhu.convert("L")
+    blur = dajiuhu.filter(ImageFilter.BLUR)
+    detail = dajiuhu.filter(ImageFilter.DETAIL)
+    edges = dajiuhu.filter(ImageFilter.FIND_EDGES)
+
+    dajiuhu.show()
+    black_white.show()
+    blur.show()
+    detail.show()
+    edges.show()
+
 
 # imgInfo()
 # cropImg()
 # pasteImg()
 # channelsImg()
-mergeImg()
+# mergeImg()
+# transposeImg()
+filterImg()

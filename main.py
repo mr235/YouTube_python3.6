@@ -1,3 +1,5 @@
+from struct import *
+
 name = "Tommy D"
 
 if name is "Bucky":
@@ -159,19 +161,24 @@ for k, v in classmates.items():
 
 print("--------------except-------------------")
 
-while True:
-    try:
-        number = int(input("What's your favourite number hoss!\n"))
-        print(18/number)
-        break
-    except ValueError:
-        print("Make sure and enter a number")
-    except ZeroDivisionError:
-        print("Don't pick zero")
-    except:
-        print("get a exception")
-    finally:
-        print("loop complete")
+
+def dealExcept():
+    while True:
+        try:
+            number = int(input("What's your favourite number hoss!\n"))
+            print(18 / number)
+            break
+        except ValueError:
+            print("Make sure and enter a number")
+        except ZeroDivisionError:
+            print("Don't pick zero")
+        except:
+            print("get a exception")
+        finally:
+            print("loop complete")
+
+
+# dealExcept()
 
 print("--------------Unpack List or Tuples-------------------")
 
@@ -215,3 +222,19 @@ stocks = {
 print(min(zip(stocks.values(), stocks.keys())))
 print(max(zip(stocks.values(), stocks.keys())))
 print(sorted(zip(stocks.values(), stocks.keys())))
+
+print("--------------struct-------------------")
+
+# Store as bytes data
+packed_data = pack("iif", 6, 19, 4.73)
+print(packed_data)
+
+print(calcsize("i"))
+print(calcsize("f"))
+print(calcsize("iif"))
+
+# To get bytes data back to normal (b'\x06\x00\x00\x00\x13\x00\x00\x00)\\\x97@')
+original_data = unpack("iif", packed_data)
+print(original_data)
+
+print(unpack("iif", b'\x06\x00\x00\x00\x13\x00\x00\x00)\\\x97@'))
